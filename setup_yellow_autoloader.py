@@ -59,12 +59,12 @@ yellow_schema = """
 
 yellow_df = (
     spark
-      .readStream
+      .read
       .format("csv")
       .schema(yellow_schema)
       .option("header",True)
       .load("dbfs:/databricks-datasets/nyctaxi/tripdata/yellow/yellow_tripdata_201[6]*.csv.gz")
-      #.orderBy(col("tpep_pickup_datetime").asc())
+      .orderBy(col("tpep_pickup_datetime").asc())
 )
 
 # COMMAND ----------
